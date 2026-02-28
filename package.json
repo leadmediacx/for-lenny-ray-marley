@@ -1,0 +1,9 @@
+{
+  "name": "for-lenny-ray-marley",
+  "version": "1.0.0",
+  "description": "A website documenting the truth for Lenny, Ray, and Marley Gorodetsky",
+  "scripts": {
+    "dev": "npx serve -l 3000 .",
+    "start": "npx serve -l 3000 ."
+  }
+}
