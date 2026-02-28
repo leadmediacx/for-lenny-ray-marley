@@ -941,3 +941,196 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ========================================
+   LANGUAGE TOGGLE BUTTON
+   ======================================== */
+.lang-toggle {
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+    margin-left: 12px;
+    font-family: 'Inter', 'Heebo', sans-serif;
+}
+
+.lang-toggle:hover {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+/* ========================================
+   HEBREW / RTL SUPPORT
+   ======================================== */
+body.hebrew {
+    font-family: 'Heebo', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    direction: rtl;
+}
+
+body.hebrew .section-title,
+body.hebrew .hero-title,
+body.hebrew .timeline-content h3,
+body.hebrew .evidence-card h3,
+body.hebrew .court-card h3,
+body.hebrew .court-documents h3,
+body.hebrew .court-quote blockquote,
+body.hebrew .fact-number,
+body.hebrew .nav-logo {
+    font-family: 'Frank Ruhl Libre', 'Playfair Display', serif;
+}
+
+body.hebrew .handwritten {
+    font-family: 'Heebo', 'Caveat', cursive;
+    font-weight: 400;
+}
+
+body.hebrew .letter-body {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.25rem;
+    line-height: 2.2;
+}
+
+/* Nav RTL */
+body.hebrew .nav-inner {
+    flex-direction: row-reverse;
+}
+
+body.hebrew .nav-links {
+    flex-direction: row-reverse;
+}
+
+body.hebrew .lang-toggle {
+    margin-left: 0;
+    margin-right: 12px;
+}
+
+/* Hero RTL */
+body.hebrew .hero-dedication {
+    letter-spacing: 2px;
+}
+
+/* Letter RTL */
+body.hebrew .letter-card {
+    text-align: right;
+}
+
+body.hebrew .letter-sign {
+    text-align: right;
+}
+
+/* Timeline RTL */
+body.hebrew .timeline-item.left {
+    left: auto;
+    right: 50%;
+    text-align: left;
+    padding-left: 60px;
+    padding-right: 40px;
+}
+
+body.hebrew .timeline-item.right {
+    left: auto;
+    right: 0;
+    text-align: right;
+    padding-right: 60px;
+    padding-left: 40px;
+}
+
+body.hebrew .timeline-item.left::after {
+    right: auto;
+    left: -8px;
+}
+
+body.hebrew .timeline-item.right::after {
+    left: auto;
+    right: -8px;
+}
+
+body.hebrew .timeline::before {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+/* Evidence RTL */
+body.hebrew .evidence-card {
+    border-left: none;
+    border-right: 4px solid var(--gold);
+}
+
+/* Messages RTL */
+body.hebrew .message-bubble.sent {
+    margin-left: 0;
+    margin-right: auto;
+    border-bottom-right-radius: 18px;
+    border-bottom-left-radius: 4px;
+}
+
+body.hebrew .message-bubble.received {
+    margin-right: 0;
+    margin-left: auto;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 4px;
+}
+
+/* Court RTL */
+body.hebrew .court-quote {
+    border-left: none;
+    border-right: 3px solid var(--gold);
+}
+
+/* Family RTL */
+body.hebrew .family-promise ul {
+    text-align: right;
+}
+
+body.hebrew .family-promise li {
+    padding-left: 0;
+    padding-right: 30px;
+}
+
+body.hebrew .family-promise li::before {
+    left: auto;
+    right: 0;
+}
+
+/* Mobile RTL */
+@media (max-width: 768px) {
+    body.hebrew .nav-inner {
+        flex-direction: row-reverse;
+    }
+
+    body.hebrew .nav-links {
+        flex-direction: column;
+    }
+
+    body.hebrew .timeline::before {
+        right: 20px;
+        left: auto;
+        transform: none;
+    }
+
+    body.hebrew .timeline-item,
+    body.hebrew .timeline-item.left,
+    body.hebrew .timeline-item.right {
+        width: 100%;
+        right: 0;
+        left: auto;
+        padding-right: 60px;
+        padding-left: 16px;
+        text-align: right;
+    }
+
+    body.hebrew .timeline-item::after,
+    body.hebrew .timeline-item.left::after,
+    body.hebrew .timeline-item.right::after {
+        right: 12px !important;
+        left: auto !important;
+    }
+}

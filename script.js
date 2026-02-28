@@ -112,4 +112,62 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ---- Language Toggle (English / Hebrew) ----
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = localStorage.getItem('lang') || 'en';
+
+    // Store English originals from DOM
+    const englishTexts = {};
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        englishTexts[el.getAttribute('data-i18n')] = el.innerHTML;
+    });
+
+    const englishTitle = document.title;
+
+    function applyLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('lang', lang);
+
+        if (lang === 'he') {
+            document.documentElement.lang = 'he';
+            document.body.classList.add('hebrew');
+            document.body.dir = 'rtl';
+            if (langToggle) langToggle.textContent = 'EN';
+            document.title = translations.he['page-title'] || englishTitle;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations.he[key]) {
+                    el.innerHTML = translations.he[key];
+                }
+            });
+        } else {
+            document.documentElement.lang = 'en';
+            document.body.classList.remove('hebrew');
+            document.body.dir = 'ltr';
+            if (langToggle) langToggle.textContent = 'עב';
+            document.title = englishTitle;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (englishTexts[key]) {
+                    el.innerHTML = englishTexts[key];
+                }
+            });
+        }
+    }
+
+    if (langToggle) {
+        langToggle.addEventListener('click', () => {
+            applyLanguage(currentLang === 'en' ? 'he' : 'en');
+        });
+    }
+
+    // Apply saved language on load
+    if (currentLang === 'he') {
+        applyLanguage('he');
+    } else {
+        if (langToggle) langToggle.textContent = 'עב';
+    }
+
 });
